@@ -1,7 +1,5 @@
-package ba.unsa.etf.rpr;
+package sample;
 
-
-import com.sun.javafx.scene.control.skin.ChoiceBoxSkin;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -91,5 +89,28 @@ public class Controller implements Initializable {
         });
     }
 
+    private boolean validnoImePrezime(String n) {
+        if(n.trim().isEmpty()) return  false;
+        if( !(n.charAt(0)>=65 && n.charAt(0)<=90))return false;
+        if(n.length()>20) return  false;
+        for(int i=1;i<n.length();i++){
+            if(!(n.charAt(i)>=97 && n.charAt(i)<=122)) return false;
+        }
+        return true;
+    }
+    private boolean validanIndex(String n){
+        int broj;
+        try{
+            broj=Integer.parseInt(n);
+            if(broj<10000 ||broj>99999) return false;
 
+        }catch (Exception e){
+            return false;
+        }
+        return  true;
+    }
+
+    public void prijavi(ActionEvent actionEvent) {
+        System.out.print(ime.textProperty().get()+" "+prezime.textProperty().get());
+    }
 }
